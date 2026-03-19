@@ -335,24 +335,30 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 
 
 
-## 5.0 Analysis techniques used
-* List the data analysis methods used and explain limitations or alternative approaches.
-* How did you structure the data analysis techniques. Justify your response.
-* Did the data limit you, and did you use an alternative approach to meet these challenges?
-* How did you use generative AI tools to help with ideation, design thinking and code optimisation?
-
-
-
 ## 5.0 Dashboard Design
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
-* Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
-* How were data insights communicated to technical and non-technical audiences?
-* Explain how the dashboard was designed to communicate complex data insights to different audiences. 
+📌 The "Keeping up with the Joneses" dashboard in a single page interaction interface designed to guide users through the project narrative from the UK North-South divide to a European comparison. The dashboard has the following sections:
+* North-South Divide:
+  * Three static box plots showing the UK regional disparities in wealth, health and happiness.  
+  * With hover tooltips showing exact values
+  * Each plot displays the statistical results of the respective hypotheses
+* UK Comparing European 
+  * interactive heatmaps with the three metrics of wealth, health and happiness and bubble plots
+    * users are invited to none or all of the selected five European counterparts to compare the uk
+  * Correlation table showing how UK differs from Europe on 3 key relationships of wealth vs happiness, wealth vs health and happiness vs health.
+* A Bullet plot showing the predictors' coefficient from the "Everything but the Kitchen Sink" happiness prediction model.
+  * positive indicators are shown in blue on the right
+  * negative indicators are shown in red on the left  
+* Ethical considerations and Limitations
+
+The dashboard aims to be friendly to both technical and non-technical audience alike with
+* statistical results diplayed directly on the charts
+* clear visual patterns, intuitive filters and hover tooltips guide the exploration of the analysis. 
+* the dashboard follows a top-down logical "what, so what and why" flow by first establising the UK North South Divide, then placing it in European contect and then revealing what truly drives happiness. 
 
 ### 5.1 Dashboard Presentation
 📌 An interactive dashboard
 
-* Interactive Tableau Dashboard on [Tableau Public](??) or via [download the Global_Tea_Trade_Dashboard.twb](??)  
+* Interactive Tableau Dashboard on ["Keeping up with the Joneses" Dashboard on Tableau Public](https://public.tableau.com/app/profile/pei.wang1891/viz/keeping_up_with_the_joneses_v3/DashboardKeepingupwiththeJoneses2) or via [download the keeping_up_with_the_joneses_v3.twbx](dashboard/keeping_up_with_the_joneses_v3.twbx)  
 
 ![Screenshot of Dashboard](docs/images/??.png) 
 
@@ -360,7 +366,7 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 ## 6.0 Key Assumptions
 📌 The [Ethical Considerations](#70-ethical-considerations) section will discuss the implication of such assumptions
 
-📋 UK North-South classification
+### 📋 UK North-South classification
 | Region Grouping | Region |
 |---|---|
 | North | North East England 
@@ -376,14 +382,24 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 | | South East England |
 | | South West England|
 
-📋 Choice of the five European nations:
+### 📋 Choice of the five European nations:
 * Germany
 * France
 * Italy
 * Spain
 * the Netherlands
 
-📋 Wealth, Health and Happiness
+The choice is a deliberate one based loosely on: 
+* physical proximity
+* size of economy
+* size of the population
+* to the north and south of the UK
+* physical shape of the country (Italy has a long North-South shape)
+* equitable and well-balance nature
+
+For more details see section 1.5 of [01_ETL_EDA_WellBeing_Data.ipynb](jupyter_notebooks/01_ETL_EDA_WellBeing_Data.ipynb).
+
+### 📋 Wealth, Health and Happiness
 * This project uses the following OECD's social well-being indicators as proxies for `Wealth`, `Health` and `Happiness` respectively
   * Disposable income per Capita (US$, PPP)
   * Life Expectancy (in years)
@@ -398,8 +414,6 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 * How did you overcome any legal or societal issues?
 
 
-## ?.0 Conclusion 
-📌 As the
 
 ## ?.0 Limitations
 📌 As the
@@ -409,6 +423,12 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 
 ## ?.0 Retrospective Project Plan
 📌 As the
+
+## ?.0 Analysis techniques used
+* List the data analysis methods used and explain limitations or alternative approaches.
+* How did you structure the data analysis techniques. Justify your response.
+* Did the data limit you, and did you use an alternative approach to meet these challenges?
+* How did you use generative AI tools to help with ideation, design thinking and code optimisation?
 
 ## ?.0 Reflections on Challenges
 📌 As the
@@ -427,9 +447,6 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 * What new skills or tools do you plan to learn next based on your project experience? 
 
 
-# Further Works That May Address Some of These Limitations: 
-* To u
-
 
 # Tech Stack & Libraries
 * Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
@@ -442,8 +459,6 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
   * ![Scikit-learn](https://img.shields.io/badge/-scikit--learn-%23F7931E?logo=scikit-learn&logoColor=white)
   * [![Pingouin](https://img.shields.io/badge/Pingouin-stats%3Fcolor%3Dfedcba)](https://pingouin-stats.org/)
   * ![SciPy](https://img.shields.io/badge/SciPy-654FF0?style=flat&logo=scipy&logoColor=white)
-  * [![wbgapi](https://img.shields.io/badge/wbgapi-blue)](https://pypi.org/project/wbgapi/)
-  * [![country-converter](https://img.shields.io/badge/country_converter-red)](https://pypi.org/project/country-converter/)
 * ![Tableau](https://custom-icon-badges.demolab.com/badge/Tableau-0176D3?logo=tableau&logoColor=fff)
 * ![Git workflow](https://img.shields.io/badge/Github%20Actions-282a2e?style=for-the-badge&logo=githubactions&logoColor=367cfe)
 
