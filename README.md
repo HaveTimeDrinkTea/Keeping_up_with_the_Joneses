@@ -77,33 +77,56 @@ The result of this analysis is a dashboard that will hopefully challenge the ass
 
 ## 3.0 Hypothesis Formulaton, Validation and Conclusion
 
-📌 From those primary questions listed in the introductory paragraph, I have derived the following hypotheses which
+📌 From those primary questions listed in the introductory paragraph, I have derived the hypotheses listed in this section. 
+
+The workings can be found in [02_Hypothesis_Testing.ipynb](jupyter_notebooks/02_Hypothesis_Testing.ipynb) where I rigorously tested these hypothesis using pingouin for statistical outputs complemented by visualisations using matplotlib.
+
+This project has made some [key assumptions](#60-key-assumptions) in its treatment of the data.
+
 
 ### 3.1 Hypothesis 1 `(MVP)` _**"The North-outh Wealth Gap"**_
-📌 Hypothesis 1 attempts to look at whether there is a significant difference in disposable income per capita between the Northern and Southern regions.
+📌 Hypothesis 1 examines whether there is a significant difference in disposable income per capita between the Northern and Southern regions.
 
 >
 > H<sub>0</sub>: The mean disposable income per capita (US$ PPP) of Northern UK regions is equal to the mean disposable income per capita (US$ PPP) of Southern UK regions.
 > 
 
-This is to be validated by:
+Using the Shapiro-Wilk test for normality, it was discovered that 
+* Disposable Income per Capita for UK as a whole does not follow a normal distribution
+* But when we separate the income into the north and southern regional groupings, each of these region grouping's income are deemed to be normally distribution.
+
+As such, however, the diffence in standard deviations between North and South regional incomes (US$1,475 and US$6,980 respectively) is quite large. This therefore puts the suitability of the t-test into question as it assumes equal variance and normal distribution. I tested the difference of the means of income using both the t-test and the Welch's t-test (which does not assume equal variance) and received contradictory results. 
+
+With a small observations of 6 in each region, it was decided that the non-parametric Mann-Whitney's U test is more suitable as it does not assume normal distribution nor does it assume equal variance.
+
+| Test | p-val | Conclusion at ⍺ = 0.05|
+|---|---|---|
+| t-test | 0.039423 | Reject H<sub>0</sub> |
+| Welch's t-test | 0.059962 | Do Not Reject H<sub>0</sub> |
+| Mann-Whitney's U test | 0.015152  | Reject H<sub>0</sub> |
+
+‼️📝 As the number of observation is inevitablity small at the TL2 regions, Mann-Whitney U's test will be used without having to test the normality of the underlying data.
+
 
 #### Results & Findings  
-📌 In [02_Hypothesis_Testing.ipynb](jupyter_notebooks/02_Hypothesis_Testing.ipynb), I rigorously tested two hypotheses and used pingouin for statistical outputs which is complemented by visualisations using matplotlib.
+📌  The descriptive statistics suggest that Southern region do have higger disposable income with a mean incomde of US$3,4,987 compared to the North's US$28,090. It is to be noted that Northern regions are quite homogeneous in their income level swhereas the Southern are not.  
 
+📌 With a `p-val` of 0.015152 which is less than the 5% significance level (⍺ = 0.05), we _**COULD**_ reject H<sub>0</sub> and conclude that there is a statistically significant difference in disposable income per capita (US$ PPP) between the north and the south of UK.
+
+The Common Langauge Effect Size (CLES) reveals that if one were to compare a randomly chosen Northern Region and a Southern region, there is a 91.7% chance that the southern will have a higher income.
 
 
 ### 3.2 Hypothesis 2 `MVP` _**"The North-South Happiness Gap"**_
-📌 Hypothesis 2 attempts to look at whether there is a significant difference in life satisfaction between the Northern and Southern regions.
+📌 Hypothesis 2 examines whether there is a significant difference in life satisfaction between the Northern and Southern regions.
 
 >
 > H<sub>0</sub>: The mean life satisfaction of Northern UK regions is equal to the mean life satisfaction of Southern UK regions.
 > 
 
-This is to be validated by:
+This hypoth
 
 #### Results & Findings  
-📌 I rigorously tested two hypotheses and used pingouin for statistical outputs which is complemented by visualisations using matplotlib.
+📌 
 
 
 ### 3.3 Hypothesis 3 `MVP` _**"The North-South Health Gap"**_
@@ -116,7 +139,7 @@ This is to be validated by:
 This is to be validated by:
 
 #### Results & Findings  
-📌 I rigorously tested two hypotheses and used pingouin for statistical outputs which is complemented by visualisations using matplotlib.
+📌 =
 
 
 ### 3.4 Hypothesis 4 `MVP` _**"Keeping Up with the Joneses" Richer but Happier and Healthier?"**_
@@ -164,23 +187,61 @@ In `??.ipynb`, I created ? models for predicting ...
 ![Screenshot of Dashboard](docs/images/??.png) 
 
 
-## 6.0 Ethical considerations
+## 6.0 Key Assumptions
+📌 The [Ethical Considerations](#70-ethical-considerations) section will discuss the implication of such assumptions
+
+📋 UK North-South classification
+| Region Grouping | Region |
+|---|---|
+| North | North East England 
+| | North West England |
+| | Yorkshire and The Humber |
+| | Scotland |
+| | Northern Ireland |
+| | Wales |
+| South | East Midlands |
+| | West Midlands |
+| | East of England |
+| | Greater London |
+| | South East England |
+| | South West England|
+
+📋 Choice of the five European nations:
+* Germany
+* France
+* Italy
+* Spain
+* the Netherlands
+
+📋 Wealth, Health and Happiness
+* This project uses the following OECD's social well-being indicators as proxies for `Wealth`, `Health` and `Happiness` respectively
+  * Disposable income per Capita (US$, PPP)
+  * Life Expectancy (in years)
+  * Life Satisfaction Index (0 - 10, self-reported)
+
+
+
+
+## 7.0 Ethical considerations
+📌 As the
 * Were there any data privacy, bias or fairness issues with the data?
 * How did you overcome any legal or societal issues?
 
 
-# Conclusion 
+## ?.0 Conclusion 
 📌 As the
 
-# Limitations
+## ?.0 Limitations
+📌 As the
 * This individual capstone project makes
 
 
 
-## 7.0 Retrospective Project Plan
+## ?.0 Retrospective Project Plan
+📌 As the
 
-
-## 8.0 Reflections on Challenges
+## ?.0 Reflections on Challenges
+📌 As the
 * Tableau's geocoding issues for UK. overcame by using manual coodinates, changing to treemap 
 * creating data table and use of csv
 * use of parameters, and set actions 
