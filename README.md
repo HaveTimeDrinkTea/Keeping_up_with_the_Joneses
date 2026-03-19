@@ -10,6 +10,37 @@ This project seeks to ask the following questions:
 The result of this analysis is a dashboard that will hopefully challenge the assumptions of "Levelling Up", reveal surprising patterns and invite us to consider the real drivers of happiness.
 
 
+## Table of Contents
+
+1. [Project Approach & Project Plan](#10-project-approach--project-plan)
+2. [Project Links](#20-project-links)
+3. [Data Source](#30-data-source)
+4. [Business and Learning Requirements](#40-business-and-learning-requirements)
+   - 4.1 [Business Requirements](#41-business-requirements)
+   - 4.2 [Capstone Project Learning Requirements](#42-capstone-project-learning-requirements)
+5. [Hypothesis Formulation, Validation and Conclusion](#50-hypothesis-formulation-validation-and-conclusion)
+   - 5.1 [Hypothesis 1 – "The North-South Wealth Gap"](#51-hypothesis-1--the-north-south-wealth-gap)
+   - 5.2 [Hypothesis 2 – "The North-South Happiness Gap"](#52-hypothesis-2--the-north-south-happiness-gap)
+   - 5.3 [Hypothesis 3 – "The North-South Health Gap"](#53-hypothesis-3--the-north-south-health-gap)
+   - 5.4 [Hypothesis 4 – "Keeping Up with the Joneses"](#54-hypothesis-4--keeping-up-with-the-joneses)
+6. [Predictive Modelling and Results](#60-predictive-modelling-and-results)
+   - 6.1 [Predictive Model 1: "The Usual Suspects"](#61-predictive-model-1-the-usual-suspects)
+   - 6.2 [Predictive Model 2: "Everything but the Kitchen Sink"](#62-predictive-model-2-everything-but-the-kitchen-sink)
+   - 6.3 [Model Limitations](#63-model-limitations)
+7. [Dashboard Design](#70-dashboard-design)
+   - 7.1 [Dashboard Presentation](#71-dashboard-presentation)
+8. [Key Assumptions](#80-key-assumptions)
+9. [Ethical Considerations](#90-ethical-considerations)
+10. [Analysis Techniques Used](#100-analysis-techniques-used)
+11. [Limitations](#110-limitations)
+12. [Retrospective Look on the Project Plan](#120-retrospective-look-on-the-project-plan)
+13. [Future Enhancements](#130-future-enhancements)
+14. [Tech Stack & Libraries](#140-tech-stack--libraries)
+15. [How to Reproduce This Project](#150-how-to-reproduce-this-project)
+16. [License](#160-license)
+17. [Credits and Acknowledgements](#170-credits-and-acknowledgements)
+18. [Contributions](#180-contributions)
+
 
 ## 1.0 Project Approach & Project Plan
 
@@ -75,7 +106,7 @@ The result of this analysis is a dashboard that will hopefully challenge the ass
 * L03: Review and Revise data analytics project plans: This will be detailed in this README.md
 
 
-## 3.0 Hypothesis Formulaton, Validation and Conclusion
+## 5.0 Hypothesis Formulaton, Validation and Conclusion
 
 📌 From those primary questions listed in the introductory paragraph, I have derived the hypotheses listed in this section. 
 
@@ -84,7 +115,7 @@ The workings can be found in [02_Hypothesis_Testing.ipynb](jupyter_notebooks/02_
 This project has made some [key assumptions](#60-key-assumptions) in its treatment of the data.
 
 
-### 3.1 Hypothesis 1 `(MVP)` _**"The North-outh Wealth Gap"**_
+### 5.1 Hypothesis 1 `(MVP)` _**"The North-outh Wealth Gap"**_
 📌 Hypothesis 1 examines whether there is a significant difference in disposable income per capita between the Northern and Southern regions.
 
 >
@@ -116,7 +147,7 @@ With a small observations of 6 in each region, it was decided that the non-param
 The Common Langauge Effect Size (`CLES`) reveals that if one were to compare a randomly chosen Northern Region and a Southern region, there is a 91.7% chance that the southern will have a higher income and bby extention, more wealthy.
 
 
-### 3.2 Hypothesis 2 `MVP` _**"The North-South Happiness Gap"**_
+### 5.2 Hypothesis 2 `MVP` _**"The North-South Happiness Gap"**_
 📌 Hypothesis 2 examines whether there is a significant difference in life satisfaction between the Northern and Southern regions.
 
 >
@@ -128,7 +159,7 @@ The Common Langauge Effect Size (`CLES`) reveals that if one were to compare a r
 
 📌  The descriptive statistics confirms this finding. Northern regions have a mean life satisfaction of 6.83 while the Southern regions average at 6.85.  This difference of just 0.02 on a scale of 0 to 10 is small. The Northern region saw a greater variation in their life satifaction index (Standard deviation of 0.15) where both the highest and lowest index for the whole of UK is in the North. The South, however, is more homogeneous in this respect (Standard deviation of 0.0.08). 
 
-### 3.3 Hypothesis 3 `MVP` _**"The North-South Health Gap"**_
+### 5.3 Hypothesis 3 `MVP` _**"The North-South Health Gap"**_
  * Hypothesis 3 attempts to look at whether there is a significant difference in life expectancy between the Northern and Southern regions.
 
 >
@@ -149,7 +180,7 @@ The Common Langauge Effect Size (`CLES`) reveals that if one were to compare a r
 | H3 Health | North is less healthy (p=0.008) | 97.2 %|
 
 
-### 3.4 Hypothesis 4 `MVP` _**"Keeping Up with the Joneses" Richer but Happier and Healthier?"**_
+### 5.4 Hypothesis 4 `MVP` _**"Keeping Up with the Joneses" Richer but Happier and Healthier?"**_
 * Hypothesis 4 asks whether the relationships between income, life expectancy and life satisfaction in the UK are different compared to the selected five nations. 
 
 >
@@ -187,7 +218,7 @@ It is interesting to note that, the UK stands out in its unusually strong link b
 
 
 
-## 4.0 Predictive Modellings and Results:
+## 6.0 Predictive Modellings and Results:
 📌 In [03_Predictive_Modelling.ipynb](jupyter_notebooks/03_Predictive_Modelling.ipynb), I created 2 main models for predicting Happiness.
 
 The full dataset contains 91 observations across six nations. 
@@ -197,7 +228,7 @@ As variables income (in '000s) and health (in years) are of different scales, we
 The models in this section used Lasso regression with a very small penalty (alpha=0.01) to select predictors that are important. This small penalty will only remove predictors that are truly useless. In other words, we aim to keep as many predictors as possible in our models.
 
 
-### 4.1 Predictive Model 1: "The Usual Suspects" Wealth, Health and Happiness
+### 6.1 Predictive Model 1: "The Usual Suspects" Wealth, Health and Happiness
 📌 Model 1 tests a straightforward question which is whether one can "buy" happiness with wealth and health through the use of a mutliple linear regression model with `life_satisfaction_index` as the dependent variable and `disposable_income_pc` and `life_expectancy` as predictors.
 
 The expected model is: 
@@ -239,7 +270,7 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 
 
 
-### 4.2 Predictive Model 2: "Everything but the Kitchen Sink"
+### 6.2 Predictive Model 2: "Everything but the Kitchen Sink"
 📌 Since Model 1/1A can only explain about 25% of happiness with the ususal suspects of wealth and health, the project changed its direction to look at all 14 social well-being indicators in the OECD regional well-being data as grouped below: 
 * Material conditions:
   * `disposable_income_pc`
@@ -323,7 +354,7 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 📌 Model 3 "Kitchen Sink with the UK Effect" added a UK indicator into the Model 2 to see whether the UK regions differs systemativally from their European counterparts after accounting for all other indicators. However, the Lasso algorithm dropped this UK indicator entirely. This leads to a clear conclusion that being in the UK has no independent effect on regional happiness.  The UK regions are exactly as happy as their European neighbours with the same profile on these indicators.
 
 
-### 4.3 Limitations
+### 6.3 Model's Limitations
 📌 Small Dataset: there are only 91 observtions across the 6 nations. The small sample size leads to risk of overfitting as we see in Model 1. It may also limit the complexity of models that can be reliably fitted as we see in Models 2 and 3.
   * The sample size is small as we aggregated to TL2 levels to respect privacy concerns.
 
@@ -335,7 +366,7 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 
 
 
-## 5.0 Dashboard Design
+## 7.0 Dashboard Design
 📌 The "Keeping up with the Joneses" dashboard in a single page interaction interface designed to guide users through the project narrative from the UK North-South divide to a European comparison. The dashboard has the following sections:
 * North-South Divide:
   * Three static box plots showing the UK regional disparities in wealth, health and happiness.  
@@ -356,7 +387,7 @@ The dashboard aims to be friendly to both technical and non-technical audience a
 * clear visual patterns, intuitive filters and hover tooltips guide the exploration of the analysis. 
 * the dashboard follows a top-down logical "what, so what and why" flow by first establising the UK North South Divide, then placing it in European contect and then revealing what truly drives happiness. 
 
-### 5.1 Dashboard Presentation
+### 7.1 Dashboard Presentation
 📌 An interactive dashboard
 
 * Interactive Tableau Dashboard on ["Keeping up with the Joneses" Dashboard on Tableau Public](https://public.tableau.com/app/profile/pei.wang1891/viz/keeping_up_with_the_joneses_v3/DashboardKeepingupwiththeJoneses2) or via [download the keeping_up_with_the_joneses_v3.twbx](dashboard/keeping_up_with_the_joneses_v3.twbx)  
@@ -364,7 +395,7 @@ The dashboard aims to be friendly to both technical and non-technical audience a
 ![Screenshot of Dashboard](docs/images/??.png) 
 
 
-## 6.0 Key Assumptions
+## 8.0 Key Assumptions
 📌 The [Ethical Considerations](#70-ethical-considerations) section will discuss the implication of such assumptions
 
 ### 📋 UK North-South classification
@@ -407,7 +438,7 @@ For more details see section 1.5 of [01_ETL_EDA_WellBeing_Data.ipynb](jupyter_no
   * Life Satisfaction Index (0 - 10, self-reported)
 
 
-## 7.0 Ethical considerations
+## 9.0 Ethical considerations
 📌 Data Privacy
 * All the data used in this project is aggregated at the TL2 regional level. Each value represents the averages of thousands of individuals. No personally identifiable information is used. 
 * The OECD applies strict disclosure controls to smaller regions TL3 and below to prevent identification.
@@ -447,9 +478,37 @@ For more details see section 1.5 of [01_ETL_EDA_WellBeing_Data.ipynb](jupyter_no
 * All data sources, preparation steps, analytical code and modelling choice are documented in the accompanying Juypter notebook and Github repo. 
 
 
+## 10.0 Analysis Techniques Used
+📌 Data analysis methods used.
+* For hypothesis testings:
+  * normality test for Hypothesis 1
+  * t-test and Welch's t-test for Hypothesis 1 and Mann-Whitney U Test for Hypotheses 1, 2 and 3 
+  * Pearson Correlation for Hypothesis 4
+* For Preditive modelling:
+  * Multi-Variate Linear Regression for Models 1/1A, 2 and 3 with Standard Scalar and Lasso regularisation.
+  * Train/Test split
+
+📌 Structure the data analysis techniques
+* The analysis in this project progressed in layers:
+  * ETL and EDA of the data
+  * Hypothesis testing 
+  * Predictive modelling based on hypothesis findings
+
+📌 Data Limitations
+* The TL2 level of granularity resulted in a total dataset size of 91 observations. 
+  * This leads to reduced statistical power and overfitting of models.
+* Tableau geocoding and mapping limits.
+
+📌 Use of generative AI tools
+All analytical questions, decisions and interpretations remained under human oversight. The following involved the use of generative AI tool:  
+* Ideation and brainstorming to refine the project scope 
+* Design of the hypothesis and dashboard interactive controls 
+* Coding assistance in plotting in Jupyter notebooks and guidance in creating some dashboard interactive 
+* documentation in formating test and modelling results in markdown. 
 
 
-## 8.0 Limitations
+
+## 11.0 Project Limitations
 
 📌 Sample Size
 * Working on data at the more aggregated TL2 levels necessarily means limited data for the 6 nations.
@@ -464,18 +523,19 @@ For more details see section 1.5 of [01_ETL_EDA_WellBeing_Data.ipynb](jupyter_no
 
 
 
-## 9.0 Retrospective Look on the Project Plan
+## 12.0 Retrospective Look on the Project Plan
 
 📌 What went well
 * The core "Keeping up with the Joneses" narrative of the project held firm. 
 * The flow from UK focuses hypotheses to European comparision and eventually to the predictors of happiness is logical and effective as each stage builds on the previous.
 
 📌 Challenges
-* The most significant deviation from the plan was in the dashboard build/
+* The most significant deviation from the plan was in the dashboard build:
   * the inital ambition to have a colourful and interactive geospatial maps was thwarted by Tableau Public geocoding limitations on the UK regions. 
   * This required a pivot to use tree map as an alternative visualisations. Even with the tree maps, Tableau Public does not allow the show of all regions' names and the dashboard would have to rely on hover tooltips for region identifications.
   * the Correlation table also proved to me more complicated then it really is as I have exhausted all ways of creating it in Tableau Public and have to resort to a copy and paste method.
   * Tableau Public also lost connection the original dataset and having exhausted all means of reconnecting to the csv data, I lost half of day of work on the dashboard and have to spent another half to recreate the dashboard from scratch.
+  * Finding online solutions to issues or design features only to realise that it is not for Tableau Public.
 
 
 📌 Lessons Learnt
@@ -485,32 +545,17 @@ For more details see section 1.5 of [01_ETL_EDA_WellBeing_Data.ipynb](jupyter_no
 
 
 
-## ?.0 Analysis techniques used
-* List the data analysis methods used and explain limitations or alternative approaches.
-* How did you structure the data analysis techniques. Justify your response.
-* Did the data limit you, and did you use an alternative approach to meet these challenges?
-* How did you use generative AI tools to help with ideation, design thinking and code optimisation?
+## 13.0 Future Enhancements
 
-## ?.0 Reflections on Challenges
-📌 As the
-* Tableau's geocoding issues for UK. overcame by using manual coodinates, changing to treemap 
-* creating data table and use of csv
-* use of parameters, and set actions 
-* finding solutions only to realise that it is not for Tableau Public
+* Rebuild the Dashboard in PowerBI. This was in the original project plan but the challenges faced in Tableau Public meant that time was taken up to produce a MVP dashboard in Tableau.
 
-## 9.0 Unfixed Bugs
-* Please mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable to consider, paucity of time and difficulty understanding implementation are not valid reasons to leave bugs unfixed.
-* Did you recognise gaps in your knowledge, and how did you address them?
-* If applicable, include evidence of feedback received (from peers or instructors) and how it improved your approach or understanding.
+* Extend the predictive model to include more European nations.
 
-## 10.0 Development Roadmap
-* What challenges did you face, and what strategies were used to overcome these challenges?
-* What new skills or tools do you plan to learn next based on your project experience? 
+* Add time-series analysis to explore how North-South Divide and the happiness drivers have evvolved over time.
 
 
-
-# Tech Stack & Libraries
-* Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
+## 14.0 Tech Stack & Libraries
+* Libraries used in the project
 * ![Python](https://img.shields.io/badge/python-3.13%2B-blue)
 * Libraries:
   * [![Pandas](https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=fff)](#)
@@ -526,35 +571,31 @@ For more details see section 1.5 of [01_ETL_EDA_WellBeing_Data.ipynb](jupyter_no
 
 
 
-# How to Reproduce This Project
+## 15.0 How to Reproduce This Project
 * (Recommended) Create a virtual environment.
 * Clone the repository
-> git clone https://github.com/HaveTimeDrinkTea/global_tea_trade_analysis.git
+> git clone https://github.com/HaveTimeDrinkTea/Keeping_up_with_the_Joneses.git
 * Install dependencies: 
 > pip install -r requirements.txt
 * Open the Jupyter notebooks (e.g.):
-> jupyter notebook notebooks/notebooks/01_ETL_FAO.ipynb
-
-> jupyter notebook notebooks/notebooks/01_ETL_WorldBank.ipynb
+> jupyter notebook juypter_notebooks/01_ETL_EDA_WellBeing_Data.ipynb
 
 
-# License
+## 16.0 License
 MIT License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
-# Credits and Acknowledgements
+## 17.0 Credits and Acknowledgements
 * My tutors [Mr. John Anih](https://github.com/JohnAnih), Mr Vasi Pavaloi, [Mr. Mark Briscoe](https://github.com/mbriscoe/)
 * eLearning materials of the "Data Analytics with AI" Bootcamp by the Code Institute
+* [Code Institute's Github sample repo](https://github.com/Code-Institute-Org/data-analytics-template)
 * Learnings from Mimo.org (Python e-learning) and Python and the relevant packages' official Websites
 * Visualisation guidance:
   * [From Data to Viz](https://www.data-to-viz.com)
   * [The Royal Statistical Society's Best Practices for Data Visualisation](https://royal-statistical-society.github.io/datavisguide/docs/choosing.html)
-* Deepseek for
-  * Project brainstorming
-  * helping me to understand the data that is used for the analysis (e.g. nominal GDP for comparing within years)
-  * being my Python and Pandas tutor and for helping to resolve code errors
+
  
 
-# Contributions
+## 18.0 Contributions
 * If you have any query or contribution about this repo, please contact via
   * GitHub [https://github.com/HaveTimeDrinkTea](https://github.com/HaveTimeDrinkTea)
