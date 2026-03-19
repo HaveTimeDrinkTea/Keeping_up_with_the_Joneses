@@ -16,7 +16,7 @@ The result of this analysis is a dashboard that will hopefully challenge the ass
 📌 As the aim of this 5-day capstone project is to showcase a complete data analytics workflow from forming hypotheses, sourcing data, ETL/EDA of the data, testing the hypotheses, model predictions and presenting the findings in an interactive dashboard. It aims to look into the ethical considerations in the use and presentation of the data. This project is managed by the use of the Kanban board.
 
 | Phase | Tasks |
-|---|---|
+|:---|:---|
 | Days 1 -2| Hypothesis formation, data sourcing, ETL and EDA |
 | Day 2 - 3 | Hypothesis testings, linear regression modelling Part 1 & Part 2|
 | Day 4 | Tableau Dashboard |
@@ -143,7 +143,7 @@ The Common Langauge Effect Size (`CLES`) reveals that if one were to compare a r
 
 #### Summary Conclusion for Hypotheses 1, 2 and 3
 | Hypothesis | Finding | CLES for South|
-|---|---|---|
+|:---|:---|:---|
 | H1 Wealth | North is poorer (p=0.015) | 91.2 %|
 | H2 Happiness | No Difference (p=1.0) | 48.6 %|
 | H3 Health | North is less healthy (p=0.008) | 97.2 %|
@@ -187,15 +187,155 @@ It is interesting to note that, the UK stands out in its unusually strong link b
 
 
 
-## 4.0 Predictive Modelling Results:
-In `??.ipynb`, I created ? models for predicting ...
+## 4.0 Predictive Modellings and Results:
+📌 In [03_Predictive_Modelling.ipynb](jupyter_notebooks/03_Predictive_Modelling.ipynb), I created 2 main models for predicting Happiness.
 
-📌🔍🕵🏻‍♂️ Conclusion: 
+The full dataset contains 91 observations across six nations. 
+
+As variables income (in '000s) and health (in years) are of different scales, we apply a standardisation to allow the direct comparison of the coefficients. 
+
+The models in this section used Lasso regression with a very small penalty (alpha=0.01) to select predictors that are important. This small penalty will only remove predictors that are truly useless. In other words, we aim to keep as many predictors as possible in our models.
+
+
+### 4.1 Predictive Model 1: "The Usual Suspects" Wealth, Health and Happiness
+📌 Model 1 tests a straightforward question which is whether one can "buy" happiness with wealth and health through the use of a mutliple linear regression model with `life_satisfaction_index` as the dependent variable and `disposable_income_pc` and `life_expectancy` as predictors.
+
+The expected model is: 
+> 
+> Happiness = β₀ + β₁(Wealth) + β₂(Health) + ε
+>
+
+
+#### Training Approach 
+📌 The data was first split into Train and Test set on a 80/20 split to train and test the model. Model 1 achieved a  R<sup>2</sup> of 0.254 which means that Model 1 (wealth and health) can only explain 25.4% of th variations in happiness. 
+
+Upon reflection, I have decided to use all 91 observations in the to train the model. The resulting Model 1A did not fare any better.
+
+| Coefficient | Model 1 (Train Only) | Model 1a (Full Dataset) |
+|:---|:---|:---|
+| **Income** | +0.173 | +0.146 |
+| **Health (Life Expectancy)** | -0.123 | -0.140 |
+
+#### Results 
+
+| Metric | Model 1 (Train) | Model 1 (Test) | Model 1a (Full Dataset) |
+|:---|:---|:---|:---|
+| **R² Score** | 0.254 | -0.006 | 0.236 |
+| **Mean Absolute Error (MAE)** | 0.288 | 0.242 | 0.281 |
+| **Mean Squared Error (MSE)** | 0.143 | 0.110 | 0.136 |
+| **Root Mean Squared Error (RMSE)** | 0.379 | 0.332 | 0.368 |
+| **Sample Size** | 73 | 18 | 91 |
+
+
+* With the Test set R<sup>2</sup> of -0.006, it is clear that Model 1 suffers from overfitting.
+
+
+#### Model 1/1A Interpretations
+📌 Looking only at Model 1A (full dataset used to train the model), we can see that it can only account for roughly a quarter or 23.6% of variations in the happiness index. 
+
+* The income coefficient of +0.146 is relatively small which suggests that wealthier regions tend to be (slightly) happier. Such that 1 standard deviation increase in wealth can only increase 0.146 standard deviation in happiness on a scale of 0-10.
+* The life expectancy coefficient is surprisingly negative (-0.14). This seemingly counterintuitive finding suggests that across all six nations, living to an older age does not equate to having more happiness. Howeever, I think we need to understand that perhaps there are many factors at play. 
 
 
 
 
-## 4.0 Analysis techniques used
+### 4.2 Predictive Model 2: "Everything but the Kitchen Sink"
+📌 Since Model 1/1A can only explain about 25% of happiness with the ususal suspects of wealth and health, the project changed its direction to look at all 14 social well-being indicators in the OECD regional well-being data as grouped below: 
+* Material conditions:
+  * `disposable_income_pc`
+  * `employment_rate`
+  * `unemployment_rate`
+  * `rooms_per_capita` 
+  * `housing_affordability_pct` 
+* Health
+  * `life_expectancy`
+  * `mortality_rate` 
+* Safety
+  * `homicide_rate`
+* Education
+    * `secondary_education_pct` 
+* Environment
+  * `air_quality_pm25` 
+* Digital Access
+  * `broadband_access_pct` 
+  * `internet_speed_deviation` 
+* Civic engagements and Social Connections:
+  * `voter_turnout_pct` 
+  * `social_network_support_index`
+
+📌 Having created a moderately performing Model 2, this project proceed to add a variable to Model 2 to see if being in the UK has an impact on the prediction of happiness. 
+  * This Model 3 is named as "Kitchen Sink and the UK Effect".
+
+#### Training Approach 
+📌 The data was split into Train and Test set on a 80/20 split to train and test the model. 
+
+
+#### Model 2 & 3: Kitchen Sink with and without UK Effect Indicator
+
+
+| Dimension | Indicator | Model 2 Coefficient | Rank | Model 3 Coefficient | Rank |
+|:---|:---|:---|:---|:---|:---|
+| **Material Conditions** | `disposable_income_pc` | <div style="text-align: right">0.060</div> | <div style="text-align: center">8</div> | <div style="text-align: right">0.059</div> | <div style="text-align: center">8</div> |
+| | `employment_rate` | <div style="text-align: right">-0.056</div> | <div style="text-align: center">10</div> | <div style="text-align: right">-0.056</div> | <div style="text-align: center">10</div> |
+| | `unemployment_rate` | <div style="text-align: right">-0.100</div> | <div style="text-align: center">5</div> | <div style="text-align: right">-0.100</div> | <div style="text-align: center">5</div> |
+| | `rooms_per_capita` | <div style="text-align: right">-0.044</div> | <div style="text-align: center">11</div> | <div style="text-align: right">-0.044</div> | <div style="text-align: center">11</div> |
+| | `housing_affordability_pct` | <div style="text-align: right">-0.059</div> | <div style="text-align: center">9</div> | <div style="text-align: right">-0.059</div> | <div style="text-align: center">9</div> |
+| **Health** | `life_expectancy` | <div style="text-align: right">-0.254</div> | <div style="text-align: center">2<sup>nd</sup></div> | <div style="text-align: right">-0.253</div> | <div style="text-align: center">2<sup>nd</sup></div> |
+| | `mortality_rate` | <div style="text-align: right">-0.276</div> | <div style="text-align: center">1<sup>st</sup></div> | <div style="text-align: right">-0.275</div> | <div style="text-align: center">1<sup>st</sup></div> |
+| **Safety** | `homicide_rate` | <div style="text-align: right">0.067</div> | <div style="text-align: center">7</div> | <div style="text-align: right">0.067</div> | <div style="text-align: center">7</div> |
+| **Education** | `secondary_education_pct` | <div style="text-align: right">0.038</div> | <div style="text-align: center">12</div> | <div style="text-align: right">0.038</div> | <div style="text-align: center">12</div> |
+| **Environment** | `air_quality_pm25` | <div style="text-align: right">*discarded by Lasso*</div> | <div style="text-align: center">n.a.</div> | <div style="text-align: right">*discarded by Lasso*</div> | <div style="text-align: center">n.a.</div> |
+| **Digital Access** | `broadband_access_pct` | <div style="text-align: right">0.024</div> | <div style="text-align: center">13</div> | <div style="text-align: right">0.024</div> | <div style="text-align: center">13</div> |
+| | `internet_speed_deviation` | <div style="text-align: right">-0.087</div> | <div style="text-align: center">6</div> | <div style="text-align: right">-0.087</div> | <div style="text-align: center">6</div> |
+| **Civic Engagement & Social Connections** | `voter_turnout_pct` | <div style="text-align: right">0.238</div> | <div style="text-align: center">3<sup>rd</sup></div> | <div style="text-align: right">0.237</div> | <div style="text-align: center">3<sup>rd</sup></div> |
+| | `social_network_support_index` | <div style="text-align: right">0.117</div> | <div style="text-align: center">4</div> | <div style="text-align: right">0.116</div> | <div style="text-align: center">4</div> |
+| **UK Effect** | `uk_dummy` | – | – | <div style="text-align: right">*discarded by Lasso*</div> | <div style="text-align: center">n.a.</div> |
+
+
+
+#### Results 
+
+| Metric | Model 2 (Train) | Model 2 (Test) | Model 3 |
+|:---|:---|:---|
+| **R²** | 0.633 | 0.572 | 0.631 |
+| **MAE** | 0.195 | 0.185 | 0.196 |
+| **MSE** | 0.071 | 0.047 | 0.072 |
+| **RMSE** | 0.266 | 0.216 | 0.267 |
+
+
+📌 The "Everything but the Kitchen Sink" model is a dramatic improvement over Model 1/1A with the R<sup>2</sup> increased to 0.633. This indicates that happiness is far more predictable with we look at a fuller range of well-being indicator. 
+
+📌 The Lasso dropped the UK indicator in Model 3. This means that there is no UK effect in the prediction of happiness. This renders Model 3 as redundant.
+
+
+### Model Interpretations
+
+
+📌 Model 2 "Everything but the Kitchen Sink" included all 14 indicators covering material conditions, health, safety, education, environment, digital access and civic engagements and social interactions aspect of social well-being. This model performed substantially better than Model 1 by achieving a modest R<sup>2</sup> of 0.63 and 0.57 on the Train and Test sets respectively. The coefficients revealed that health and civic engagements and social interactions indications are in the top 4 predictors of happiness. The only possible counterintuitive indicator in the top four is  `Life_expectancy` which appears to suggest that living longer does not equate to more happiness.
+
+| Dimension | Rank | Indicator | Coefficient | 
+|:---|:---|:---|:---|
+| **Health** | <div style="text-align: center">1<sup>st</sup></div> | `mortality_rate` | <div style="text-align: right">-0.276</div> 
+| | <div style="text-align: center">2<sup>nd</sup></div> | `life_expectancy` | <div style="text-align: right">-0.254</div> | 
+| **Civic Engagement & Social Connections** | <div style="text-align: center">3<sup>rd</sup></div> | `voter_turnout_pct` | <div style="text-align: right">0.238</div> | 
+| | <div style="text-align: center">4<sup>th</sup></div> | `social_network_support_index` | <div style="text-align: right">0.117</div> | 
+
+📌 Model 3 "Kitchen Sink with the UK Effect" added a UK indicator into the Model 2 to see whether the UK regions differs systemativally from their European counterparts after accounting for all other indicators. However, the Lasso algorithm dropped this UK indicator entirely. This leads to a clear conclusion that being in the UK has no independent effect on regional happiness.  The UK regions are exactly as happy as their European neighbours with the same profile on these indicators.
+
+
+### 4.3 Limitations
+📌 Small Dataset: there are only 91 observtions across the 6 nations. The small sample size leads to risk of overfitting as we see in Model 1. It may also limit the complexity of models that can be reliably fitted as we see in Models 2 and 3.
+  * The sample size is small as we aggregated to TL2 levels to respect privacy concerns.
+
+📌 Regional Aggregations: all the indicators are agregated at the TL2 level invariably masks substantiations witin regions. Findings about regions do not necesarily apply to all individuals within those regions. 
+
+📌 Coefficent of `life_expectancy` in the models: The persistantly negative relation of `life_expectancy` with `life_satisfaction_index` in our models remains counterintuitive and difficult to reason. It may reflect cultural differences in survey reponses on the subjective `life_satisfaction_index` or that the influence on other unmeasured factors such as (and not exhaustively) diet, lifestyle, cultural outlook that can affect longevity and happiness in different ways.
+
+📌 As with all regression models, these results demonstrates correlation and not causation. The relationships depicted here do not imply that changing income or health would directly cause changes in happiness.
+
+
+
+## 5.0 Analysis techniques used
 * List the data analysis methods used and explain limitations or alternative approaches.
 * How did you structure the data analysis techniques. Justify your response.
 * Did the data limit you, and did you use an alternative approach to meet these challenges?
