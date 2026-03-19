@@ -452,11 +452,38 @@ For more details see section 1.5 of [01_ETL_EDA_WellBeing_Data.ipynb](jupyter_no
 ## 8.0 Limitations
 
 📌 Sample Size
+* Working on data at the more aggregated TL2 levels necessarily means limited data for the 6 nations.
+* The modest dataset with 91 regions inevitably limits statistical power and increase the risk of overfitting as we see in Model 1 "The Usual Suspects".
+
+📌 Predicting Trends
+* OECD's data is correct as at 2024 and is meant to be a snapshot captured over a specific period of time. It cannot be used to make any claims about trends, causality or how relationships change over time.
+
+📌 Country Selection
+* A different set of UK's European neighbours may result in different conclusion.
+* The findings in this project cannot be generalised beyond beyond the chosen countries.
 
 
 
-## ?.0 Retrospective Project Plan
-📌 As the
+## 9.0 Retrospective Look on the Project Plan
+
+📌 What went well
+* The core "Keeping up with the Joneses" narrative of the project held firm. 
+* The flow from UK focuses hypotheses to European comparision and eventually to the predictors of happiness is logical and effective as each stage builds on the previous.
+
+📌 Challenges
+* The most significant deviation from the plan was in the dashboard build/
+  * the inital ambition to have a colourful and interactive geospatial maps was thwarted by Tableau Public geocoding limitations on the UK regions. 
+  * This required a pivot to use tree map as an alternative visualisations. Even with the tree maps, Tableau Public does not allow the show of all regions' names and the dashboard would have to rely on hover tooltips for region identifications.
+  * the Correlation table also proved to me more complicated then it really is as I have exhausted all ways of creating it in Tableau Public and have to resort to a copy and paste method.
+  * Tableau Public also lost connection the original dataset and having exhausted all means of reconnecting to the csv data, I lost half of day of work on the dashboard and have to spent another half to recreate the dashboard from scratch.
+
+
+📌 Lessons Learnt
+* Doing a prototype of the Dashboard in Tableau using a small sample data could have helped to iron out the challenges faced.
+* In order to create interactive charts with global controls, I have come to appreciate the use of calculated fields, parameters and set actions on the dashboard for interative filtering. E.g. I managed to create a dual-purpose Country selector where one can choose up to 5 countries plus the UK to show on the Tree Map and the same number of countries are then shown on the Bubbles chartings with predefined country specific colourings and interactive legend to reflect that.
+* I have also come to appreciate the careful use of vertical/horizontal containers to groups charts/controls for better layout and applying a consistent colour scheme.
+
+
 
 ## ?.0 Analysis techniques used
 * List the data analysis methods used and explain limitations or alternative approaches.
