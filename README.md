@@ -343,7 +343,8 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
   * Each plot displays the statistical results of the respective hypotheses
 * UK Comparing European 
   * interactive heatmaps with the three metrics of wealth, health and happiness and bubble plots
-    * users are invited to none or all of the selected five European counterparts to compare the uk
+  * users are invited to none or all of the selected five European counterparts to compare with the UK
+  * Legends also changes based on user's choice of countries
   * Correlation table showing how UK differs from Europe on 3 key relationships of wealth vs happiness, wealth vs health and happiness vs health.
 * A Bullet plot showing the predictors' coefficient from the "Everything but the Kitchen Sink" happiness prediction model.
   * positive indicators are shown in blue on the right
@@ -406,18 +407,51 @@ For more details see section 1.5 of [01_ETL_EDA_WellBeing_Data.ipynb](jupyter_no
   * Life Satisfaction Index (0 - 10, self-reported)
 
 
-
-
 ## 7.0 Ethical considerations
-📌 As the
-* Were there any data privacy, bias or fairness issues with the data?
-* How did you overcome any legal or societal issues?
+📌 Data Privacy
+* All the data used in this project is aggregated at the TL2 regional level. Each value represents the averages of thousands of individuals. No personally identifiable information is used. 
+* The OECD applies strict disclosure controls to smaller regions TL3 and below to prevent identification.
+* By working at TL2 level, this project inherently respects those privacy concerns.
+
+
+📌 Terminology and Simplication
+* Terms such as "wealth", "health" and "happiness" are used as convenient shorthand and for a more creative narrative for specific indicators `disposable_income_pc`, `life_expectancy` and `life_satisfaction_index`. 
+* These terms are also used as proxies for the underlying indicators. This project acknowledges that it is by no means implying that having a high `disposable_income_pc` means that one is "wealthy" or that having a high `life_satisfaction_index` implies the one is "happy".
+
+
+📌 Econological Fallacy
+* All the findings apply to regions only. For example, a wealth region can have people of limited financial means nor does a region with a high level of life satisfaction contains everyone at the same level of "happiness".
+
+
+📌 Bias and Fairness
+* The project is careful in wording as neutrally as possible to reduce the risk stigmatising areas with unfavourable scores. 
+
+
+📌 North-South Groupings and Country Selection Bias 
+* The project acknowledges that the grouping of UK regions into convenient groups of 6 is inherentlly an over-simplification. For example, the placement of both the midlands regions in the South is purely an analytical choice.
+* The choice of the five European nations (France, Germany, Italy, Spain and the Netherlands)
+
+
+📌 Missing Values 
+* Some French and Spanish overseas territories have been excluded because
+  * they are geographically located far from European mainland
+  * they have missing values.
+
+
+📌 Causation vs Correlation
+* All models demonstrate association not causation.
+  * For example, the strong relationship between voter turnout and happiness simply means that happier region vote more. It does not imply that voting more leads to higher happiness.
+
+
+📌 Transparency and Reproducibility
+* All data sources, preparation steps, analytical code and modelling choice are documented in the accompanying Juypter notebook and Github repo. 
 
 
 
-## ?.0 Limitations
-📌 As the
-* This individual capstone project makes
+
+## 8.0 Limitations
+
+📌 Sample Size
 
 
 
