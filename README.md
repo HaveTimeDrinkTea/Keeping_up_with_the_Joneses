@@ -111,9 +111,9 @@ With a small observations of 6 in each region, it was decided that the non-param
 #### Results & Findings  
 📌  The descriptive statistics suggest that Southern region do have higger disposable income with a mean incomde of US$3,4,987 compared to the North's US$28,090. It is to be noted that Northern regions are quite homogeneous in their income level swhereas the Southern are not.  
 
-📌 With a `p-val` of 0.015152 which is less than the 5% significance level (⍺ = 0.05), we _**COULD**_ reject H<sub>0</sub> and conclude that there is a statistically significant difference in disposable income per capita (US$ PPP) between the north and the south of UK.
+📌 With a `p-val` of 0.015152 which is less than the 5% significance level (⍺ = 0.05), _**we can reject H<sub>0</sub> and conclude that there is a statistically significant difference in disposable income per capita (US$ PPP) between the north and the south of UK**_.
 
-The Common Langauge Effect Size (CLES) reveals that if one were to compare a randomly chosen Northern Region and a Southern region, there is a 91.7% chance that the southern will have a higher income.
+The Common Langauge Effect Size (`CLES`) reveals that if one were to compare a randomly chosen Northern Region and a Southern region, there is a 91.7% chance that the southern will have a higher income and bby extention, more wealthy.
 
 
 ### 3.2 Hypothesis 2 `MVP` _**"The North-South Happiness Gap"**_
@@ -123,11 +123,10 @@ The Common Langauge Effect Size (CLES) reveals that if one were to compare a ran
 > H<sub>0</sub>: The mean life satisfaction of Northern UK regions is equal to the mean life satisfaction of Southern UK regions.
 > 
 
-This hypoth
-
 #### Results & Findings  
-📌 
+📌 Consistent with the approach for Hypothesis 1, Hypothesis 2 was tested using the Mann-Whitney's U test which returns a `p-val` of 1.0. As such, _**we cannot reject H<sub>0</sub> and conclude that there is absolutely no evidence of a difference in life satisfaction index between the north and the south**_. With a `CLES` of 0.486, the test says that there is 50% chance of a northern region having higher happiness than the south which is essentially as random as a coin flip.
 
+📌  The descriptive statistics confirms this finding. Northern regions have a mean life satisfaction of 6.83 while the Southern regions average at 6.85.  This difference of just 0.02 on a scale of 0 to 10 is small. The Northern region saw a greater variation in their life satifaction index (Standard deviation of 0.15) where both the highest and lowest index for the whole of UK is in the North. The South, however, is more homogeneous in this respect (Standard deviation of 0.0.08). 
 
 ### 3.3 Hypothesis 3 `MVP` _**"The North-South Health Gap"**_
  * Hypothesis 3 attempts to look at whether there is a significant difference in life expectancy between the Northern and Southern regions.
@@ -136,10 +135,18 @@ This hypoth
 > H<sub>0</sub>: The mean life expectancy of Northern UK regions is equal to the mean life expectancy of Southern UK regions.
 > 
 
-This is to be validated by:
-
 #### Results & Findings  
-📌 =
+📌 Consistent with the approach for Hypothesese 1 and 2, Hypothesis 3 was tested using the Mann-Whitney's U test which returns a `p-val` of 0.008. The `CLES` of 0.972 means that if one were to compare a randomly chosen Northern Region and a Southern region, there is a 97.2% chance that the southern will have a higher life expectancy and by extension, better health. As such, at 5% significance level, _**we can reject H<sub>0</sub> and conclude that there is a statistically significant difference in life expectancy between the north and the south of UK**_.
+
+📌 The descriptive statistics paints a similar image. The southern region has a mean life expectancy of 81.2 years as compared to the northern cousins of 79.7 years. The differce is pronounced so that the healthiest Northern region (80.4) is still beow the Southern average of 81.2 years. 
+
+
+#### Summary Conclusion for Hypotheses 1, 2 and 3
+| Hypothesis | Finding | CLES for South|
+|---|---|---|
+| H1 Wealth | North is poorer (p=0.015) | 91.2 %|
+| H2 Happiness | No Difference (p=1.0) | 48.6 %|
+| H3 Health | North is less healthy (p=0.008) | 97.2 %|
 
 
 ### 3.4 Hypothesis 4 `MVP` _**"Keeping Up with the Joneses" Richer but Happier and Healthier?"**_
