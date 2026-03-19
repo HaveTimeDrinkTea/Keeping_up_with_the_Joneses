@@ -150,17 +150,40 @@ The Common Langauge Effect Size (`CLES`) reveals that if one were to compare a r
 
 
 ### 3.4 Hypothesis 4 `MVP` _**"Keeping Up with the Joneses" Richer but Happier and Healthier?"**_
-* Hypothesis 4 asks where the relationship between income, life expectancy and life satisfaction different in the UK compared to the selected six nations
+* Hypothesis 4 asks whether the relationships between income, life expectancy and life satisfaction in the UK are different compared to the selected five nations. 
 
 >
-> H<sub>0</sub>: The correlations between income, life expectancy and life satisfaction are the same for the UK and the selected six European nations.
+> H<sub>0</sub>: The correlations between income, life expectancy and life satisfaction are the same for the UK and the selected five European nations.
 > 
 
 
-This is to be validated by:
+📌  This hypothesis is to be tested and resulted interpreted using 
+* Pearson's r (correlation coefficient) which assesses the strength and direction of a linear relationship between 2 continuous variables and 
+* then use Cohen's guideline (threshold of 0.2) for interpreting correlation strengths of these relationships between the UK and Europe.
+
+Specifically, we will look at 3 separate sets of relationships (all continuous variables) and will compute the Peason's r for each relationship for the UK and for the European five.
+1. Income vs Life Satisfaction
+2. Income vs Life Expectancy
+3. Life Satisfaction vs Life Expectancy
+
+We then compare the Peason's r correlataion coefficent for each relationship between the UK and Europe. 
 
 #### Results & Findings  
-📌 I rigorously tested two hypotheses and used pingouin for statistical outputs which is complemented by visualisations using matplotlib.
+| Relationship | UK-R | EU-R | Absolute Difference (A) | A vs 0.2 threshold? | Conclusion |
+|---|---|---|---|---|---|
+| Wealth vs Happiness | 0.179	| 0.385	| 0.206	| > 0.2 | UK & EU are Different |
+| Wealth vs Health | 0.659 | -0.078 | 0.737 | > 0.2 | UK & EU are Different |
+| Happiness vs Health | -0.118 | -0.344 | 0.226 | > 0.2 | UK & EU are Different |
+
+📌 `Wealth vs Happiness`: The UK has a weak positive relationship as opposed to Europe's moderately strong positive relationship. This suggest that wealth and happiness goes _**more**_ hand in hand in Europe then in UK. In Hypotheses 1 and 2, we already seen that whilst the North is poorer, is it just as happy as the South.
+
+📌 `Wealth vs Health`: This appears to be the most striking find. The UK showed a strong positive relationship but the European neighbours showed a slightly negative relationship. This appear to suggest that unlike in the Europe, wealth and health appears to be more bundled together. That is in the UK, the poorer regions tend to be less healthy too.  
+
+📌 `Happiness vs Health`: Both the UK and Europe, showed negative relation with Europe's more moderately negatively then the UK. This seemingly counterintuitive finding seems to suggesting the regions who lived longer are less happy. This relationship appears to persist across the 6 nations. This will require further investivation.
+
+As all three sets of relationships are different between the UK and the European five, we can reject H<sub>0</sub> and conclude that the UK regions are indeed different to their regional European counterparts.
+
+It is interesting to note that, the UK stands out in its unusually strong link between `Wealth vs Health`. 
 
 
 
