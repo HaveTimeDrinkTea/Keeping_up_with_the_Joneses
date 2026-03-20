@@ -59,7 +59,7 @@ The result of this analysis is a dashboard that will hopefully challenge the ass
 
 ## 2.0 Project Links
 * [Github repo](https://github.com/HaveTimeDrinkTea/Keeping_up_with_the_Joneses)
-* Interactive Tableau Dashboard on [Tableau Public](https://public.tableau.com/views/keeping_up_with_the_joneses_v3/DashboardKeepingupwiththeJoneses2?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link) or via [download the keeping_up_with_the_joneses_v3.twbx.twbx](dashboard/keeping_up_with_the_joneses_v3.twbx)
+* Interactive Tableau Dashboard on [Tableau Public](https://public.tableau.com/app/profile/pei.wang1891/viz/Keeping_up_with_the_Joneses_v4/DashboardKeepingupwiththeJoneses2) or via [download the keeping_up_with_the_joneses_v4.twbx.twbx](dashboard/keeping_up_with_the_joneses_v4.twbx)
 * [Kanban Board on GitHub](https://github.com/users/HaveTimeDrinkTea/projects/3)
 
 ## 3.0 Data Source
@@ -76,6 +76,8 @@ The result of this analysis is a dashboard that will hopefully challenge the ass
    * Details the original sources for all the data.
  * "Reference_Year"
    * Lists the specific reference year for each indicator and region. Noting that data may be sourced from different collection periods.
+
+📌 According to the OECD, TL2 (Territorial Level 2) refers to the larger administrative regions within member countries, representing the first administrative tier of subnational government. See [Section 1.1 "Data Granularity" of 01_ETL_EDA_WellBeing_Data.ipynb](jupyter_notebooks/01_ETL_EDA_WellBeing_Data.ipynb).
 
 ## 4.0 Business and Learning Requirements    
 ### 4.1 Business Requirements
@@ -247,6 +249,12 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 | **Income** | +0.173 | +0.146 |
 | **Health (Life Expectancy)** | -0.123 | -0.140 |
 
+|  | Model 1 (Train Only) | Model 1a (Full Dataset) |
+|:---|:---|:---|
+| Intercept | 6.7028 | 6.7286 |
+
+
+
 #### Results 
 
 | Metric | Model 1 (Train) | Model 1 (Test) | Model 1a (Full Dataset) |
@@ -303,35 +311,40 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 
 #### Model 2 & 3: Kitchen Sink with and without UK Effect Indicator
 
+📌 To test the "UK Effect", we use the `is_uk` column in Model 3. 
+* However, the lasso algorithm has deemed `is_uk` as irrelevant and thereby excluded it from the model. 
+* As such, Model 3 "Kitchen Sink with UK Effect" is the same as Model 2 "Everything but the Kitchen Sink"
 
-| Dimension | Indicator | Model 2 Coefficient | Rank | Model 3 Coefficient | Rank |
-|:---|:---|:---|:---|:---|:---|
-| **Material Conditions** | `disposable_income_pc` | <div style="text-align: right">0.060</div> | <div style="text-align: center">8</div> | <div style="text-align: right">0.059</div> | <div style="text-align: center">8</div> |
-| | `employment_rate` | <div style="text-align: right">-0.056</div> | <div style="text-align: center">10</div> | <div style="text-align: right">-0.056</div> | <div style="text-align: center">10</div> |
-| | `unemployment_rate` | <div style="text-align: right">-0.100</div> | <div style="text-align: center">5</div> | <div style="text-align: right">-0.100</div> | <div style="text-align: center">5</div> |
-| | `rooms_per_capita` | <div style="text-align: right">-0.044</div> | <div style="text-align: center">11</div> | <div style="text-align: right">-0.044</div> | <div style="text-align: center">11</div> |
-| | `housing_affordability_pct` | <div style="text-align: right">-0.059</div> | <div style="text-align: center">9</div> | <div style="text-align: right">-0.059</div> | <div style="text-align: center">9</div> |
-| **Health** | `life_expectancy` | <div style="text-align: right">-0.254</div> | <div style="text-align: center">2<sup>nd</sup></div> | <div style="text-align: right">-0.253</div> | <div style="text-align: center">2<sup>nd</sup></div> |
-| | `mortality_rate` | <div style="text-align: right">-0.276</div> | <div style="text-align: center">1<sup>st</sup></div> | <div style="text-align: right">-0.275</div> | <div style="text-align: center">1<sup>st</sup></div> |
-| **Safety** | `homicide_rate` | <div style="text-align: right">0.067</div> | <div style="text-align: center">7</div> | <div style="text-align: right">0.067</div> | <div style="text-align: center">7</div> |
-| **Education** | `secondary_education_pct` | <div style="text-align: right">0.038</div> | <div style="text-align: center">12</div> | <div style="text-align: right">0.038</div> | <div style="text-align: center">12</div> |
-| **Environment** | `air_quality_pm25` | <div style="text-align: right">*discarded by Lasso*</div> | <div style="text-align: center">n.a.</div> | <div style="text-align: right">*discarded by Lasso*</div> | <div style="text-align: center">n.a.</div> |
-| **Digital Access** | `broadband_access_pct` | <div style="text-align: right">0.024</div> | <div style="text-align: center">13</div> | <div style="text-align: right">0.024</div> | <div style="text-align: center">13</div> |
-| | `internet_speed_deviation` | <div style="text-align: right">-0.087</div> | <div style="text-align: center">6</div> | <div style="text-align: right">-0.087</div> | <div style="text-align: center">6</div> |
-| **Civic Engagement & Social Connections** | `voter_turnout_pct` | <div style="text-align: right">0.238</div> | <div style="text-align: center">3<sup>rd</sup></div> | <div style="text-align: right">0.237</div> | <div style="text-align: center">3<sup>rd</sup></div> |
-| | `social_network_support_index` | <div style="text-align: right">0.117</div> | <div style="text-align: center">4</div> | <div style="text-align: right">0.116</div> | <div style="text-align: center">4</div> |
-| **UK Effect** | `uk_dummy` | – | – | <div style="text-align: right">*discarded by Lasso*</div> | <div style="text-align: center">n.a.</div> |
+|  | Model 2 |
+|:---|:---|
+| Intercept | 6.7028 |
 
+| Dimension | Indicator | Model 2 Coefficient | Rank |
+|:---|:---|:---|:---|
+| **Material Conditions** | `disposable_income_pc` | <div style="text-align: right">0.060</div> | <div style="text-align: center">8</div> | 
+| | `employment_rate` | <div style="text-align: right">-0.056</div> | <div style="text-align: center">10</div> | 
+| | `unemployment_rate` | <div style="text-align: right">-0.100</div> | <div style="text-align: center">5</div> | 
+| | `rooms_per_capita` | <div style="text-align: right">-0.044</div> | <div style="text-align: center">11</div> | 
+| | `housing_affordability_pct` | <div style="text-align: right">-0.059</div> | <div style="text-align: center">9</div> | 
+| **Health** | `life_expectancy` | <div style="text-align: right">-0.254</div> | <div style="text-align: center">2<sup>nd</sup></div> | 
+| | `mortality_rate` | <div style="text-align: right">-0.276</div> | <div style="text-align: center">1<sup>st</sup></div> |
+| **Safety** | `homicide_rate` | <div style="text-align: right">0.067</div> | <div style="text-align: center">7</div> |
+| **Education** | `secondary_education_pct` | <div style="text-align: right">0.038</div> | <div style="text-align: center">12</div> | 
+| **Environment** | `air_quality_pm25` | <div style="text-align: right">*discarded by Lasso*</div> | <div style="text-align: center">n.a.</div> | 
+| **Digital Access** | `broadband_access_pct` | <div style="text-align: right">0.024</div> | <div style="text-align: center">13</div> | 
+| | `internet_speed_deviation` | <div style="text-align: right">-0.087</div> | <div style="text-align: center">6</div> |
+| **Civic Engagement & Social Connections** | `voter_turnout_pct` | <div style="text-align: right">0.238</div> | <div style="text-align: center">3<sup>rd</sup></div> |
+| | `social_network_support_index` | <div style="text-align: right">0.117</div> | <div style="text-align: center">4</div> | 
 
 
 #### Results 
 
-| Metric | Model 2 (Train) | Model 2 (Test) | Model 3 |
+| Metric | Model 2 (Train) | Model 2 (Test) |
 |:---|:---|:---|
-| **R²** | 0.633 | 0.572 | 0.631 |
-| **MAE** | 0.195 | 0.185 | 0.196 |
-| **MSE** | 0.071 | 0.047 | 0.072 |
-| **RMSE** | 0.266 | 0.216 | 0.267 |
+| **R²** | 0.633 | 0.572 |
+| **MAE** | 0.195 | 0.185 |
+| **MSE** | 0.071 | 0.047 |
+| **RMSE** | 0.266 | 0.216 |
 
 
 📌 The "Everything but the Kitchen Sink" model is a dramatic improvement over Model 1/1A with the R<sup>2</sup> increased to 0.633. This indicates that happiness is far more predictable with we look at a fuller range of well-being indicator. 
@@ -382,15 +395,26 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
   * negative indicators are shown in red on the left  
 * Ethical considerations and Limitations
 
-The dashboard aims to be friendly to both technical and non-technical audience alike with
+📌 The dashboard is created with the colour scheme:
+  * Font-Family: Tableau (BOLD for headers and normal for text)
+  * outer container: border, outer/inner padding 4, 
+  * Inner containers: border, outer padding 2
+  * Heading 1: border 12pt
+  * Heading 2: border 10pt
+  * Body/Axis Text: 8pt
+  * Annotation: brown
+  * Colours: 3 shades of grey for the borders, 3 shades of green for the background
+
+📌 The dashboard aims to be friendly to both technical and non-technical audience alike with
 * statistical results diplayed directly on the charts
 * clear visual patterns, intuitive filters and hover tooltips guide the exploration of the analysis. 
 * the dashboard follows a top-down logical "what, so what and why" flow by first establising the UK North South Divide, then placing it in European contect and then revealing what truly drives happiness. 
 
+
 ### 7.1 Dashboard Presentation
 📌 An interactive dashboard
 
-* Interactive Tableau Dashboard on ["Keeping up with the Joneses" Dashboard on Tableau Public](https://public.tableau.com/app/profile/pei.wang1891/viz/keeping_up_with_the_joneses_v3/DashboardKeepingupwiththeJoneses2) or via [download the keeping_up_with_the_joneses_v3.twbx](dashboard/keeping_up_with_the_joneses_v3.twbx)  
+* Interactive Tableau Dashboard on ["Keeping up with the Joneses" Dashboard on Tableau Public](https://public.tableau.com/app/profile/pei.wang1891/viz/Keeping_up_with_the_Joneses_v4/DashboardKeepingupwiththeJoneses2) or via [download the keeping_up_with_the_joneses_v4.twbx](dashboard/keeping_up_with_the_joneses_v4.twbx)  
 
 ![Screenshot of Dashboard](docs/images/??.png) 
 
