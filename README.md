@@ -249,6 +249,12 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 | **Income** | +0.173 | +0.146 |
 | **Health (Life Expectancy)** | -0.123 | -0.140 |
 
+|  | Model 1 (Train Only) | Model 1a (Full Dataset) |
+|:---|:---|:---|
+| Intercept | 6.7028 | 6.7286 |
+
+
+
 #### Results 
 
 | Metric | Model 1 (Train) | Model 1 (Test) | Model 1a (Full Dataset) |
@@ -305,35 +311,40 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 
 #### Model 2 & 3: Kitchen Sink with and without UK Effect Indicator
 
+📌 To test the "UK Effect", we use the `is_uk` column in Model 3. 
+* However, the lasso algorithm has deemed `is_uk` as irrelevant and thereby excluded it from the model. 
+* As such, Model 3 "Kitchen Sink with UK Effect" is the same as Model 2 "Everything but the Kitchen Sink"
 
-| Dimension | Indicator | Model 2 Coefficient | Rank | Model 3 Coefficient | Rank |
-|:---|:---|:---|:---|:---|:---|
-| **Material Conditions** | `disposable_income_pc` | <div style="text-align: right">0.060</div> | <div style="text-align: center">8</div> | <div style="text-align: right">0.059</div> | <div style="text-align: center">8</div> |
-| | `employment_rate` | <div style="text-align: right">-0.056</div> | <div style="text-align: center">10</div> | <div style="text-align: right">-0.056</div> | <div style="text-align: center">10</div> |
-| | `unemployment_rate` | <div style="text-align: right">-0.100</div> | <div style="text-align: center">5</div> | <div style="text-align: right">-0.100</div> | <div style="text-align: center">5</div> |
-| | `rooms_per_capita` | <div style="text-align: right">-0.044</div> | <div style="text-align: center">11</div> | <div style="text-align: right">-0.044</div> | <div style="text-align: center">11</div> |
-| | `housing_affordability_pct` | <div style="text-align: right">-0.059</div> | <div style="text-align: center">9</div> | <div style="text-align: right">-0.059</div> | <div style="text-align: center">9</div> |
-| **Health** | `life_expectancy` | <div style="text-align: right">-0.254</div> | <div style="text-align: center">2<sup>nd</sup></div> | <div style="text-align: right">-0.253</div> | <div style="text-align: center">2<sup>nd</sup></div> |
-| | `mortality_rate` | <div style="text-align: right">-0.276</div> | <div style="text-align: center">1<sup>st</sup></div> | <div style="text-align: right">-0.275</div> | <div style="text-align: center">1<sup>st</sup></div> |
-| **Safety** | `homicide_rate` | <div style="text-align: right">0.067</div> | <div style="text-align: center">7</div> | <div style="text-align: right">0.067</div> | <div style="text-align: center">7</div> |
-| **Education** | `secondary_education_pct` | <div style="text-align: right">0.038</div> | <div style="text-align: center">12</div> | <div style="text-align: right">0.038</div> | <div style="text-align: center">12</div> |
-| **Environment** | `air_quality_pm25` | <div style="text-align: right">*discarded by Lasso*</div> | <div style="text-align: center">n.a.</div> | <div style="text-align: right">*discarded by Lasso*</div> | <div style="text-align: center">n.a.</div> |
-| **Digital Access** | `broadband_access_pct` | <div style="text-align: right">0.024</div> | <div style="text-align: center">13</div> | <div style="text-align: right">0.024</div> | <div style="text-align: center">13</div> |
-| | `internet_speed_deviation` | <div style="text-align: right">-0.087</div> | <div style="text-align: center">6</div> | <div style="text-align: right">-0.087</div> | <div style="text-align: center">6</div> |
-| **Civic Engagement & Social Connections** | `voter_turnout_pct` | <div style="text-align: right">0.238</div> | <div style="text-align: center">3<sup>rd</sup></div> | <div style="text-align: right">0.237</div> | <div style="text-align: center">3<sup>rd</sup></div> |
-| | `social_network_support_index` | <div style="text-align: right">0.117</div> | <div style="text-align: center">4</div> | <div style="text-align: right">0.116</div> | <div style="text-align: center">4</div> |
-| **UK Effect** | `uk_dummy` | – | – | <div style="text-align: right">*discarded by Lasso*</div> | <div style="text-align: center">n.a.</div> |
+|  | Model 2 |
+|:---|:---|
+| Intercept | 6.7028 |
 
+| Dimension | Indicator | Model 2 Coefficient | Rank |
+|:---|:---|:---|:---|
+| **Material Conditions** | `disposable_income_pc` | <div style="text-align: right">0.060</div> | <div style="text-align: center">8</div> | 
+| | `employment_rate` | <div style="text-align: right">-0.056</div> | <div style="text-align: center">10</div> | 
+| | `unemployment_rate` | <div style="text-align: right">-0.100</div> | <div style="text-align: center">5</div> | 
+| | `rooms_per_capita` | <div style="text-align: right">-0.044</div> | <div style="text-align: center">11</div> | 
+| | `housing_affordability_pct` | <div style="text-align: right">-0.059</div> | <div style="text-align: center">9</div> | 
+| **Health** | `life_expectancy` | <div style="text-align: right">-0.254</div> | <div style="text-align: center">2<sup>nd</sup></div> | 
+| | `mortality_rate` | <div style="text-align: right">-0.276</div> | <div style="text-align: center">1<sup>st</sup></div> |
+| **Safety** | `homicide_rate` | <div style="text-align: right">0.067</div> | <div style="text-align: center">7</div> |
+| **Education** | `secondary_education_pct` | <div style="text-align: right">0.038</div> | <div style="text-align: center">12</div> | 
+| **Environment** | `air_quality_pm25` | <div style="text-align: right">*discarded by Lasso*</div> | <div style="text-align: center">n.a.</div> | 
+| **Digital Access** | `broadband_access_pct` | <div style="text-align: right">0.024</div> | <div style="text-align: center">13</div> | 
+| | `internet_speed_deviation` | <div style="text-align: right">-0.087</div> | <div style="text-align: center">6</div> |
+| **Civic Engagement & Social Connections** | `voter_turnout_pct` | <div style="text-align: right">0.238</div> | <div style="text-align: center">3<sup>rd</sup></div> |
+| | `social_network_support_index` | <div style="text-align: right">0.117</div> | <div style="text-align: center">4</div> | 
 
 
 #### Results 
 
-| Metric | Model 2 (Train) | Model 2 (Test) | Model 3 |
-|:---|:---|:---|:---|
-| **R²** | 0.633 | 0.572 | 0.631 |
-| **MAE** | 0.195 | 0.185 | 0.196 |
-| **MSE** | 0.071 | 0.047 | 0.072 |
-| **RMSE** | 0.266 | 0.216 | 0.267 |
+| Metric | Model 2 (Train) | Model 2 (Test) |
+|:---|:---|:---|
+| **R²** | 0.633 | 0.572 |
+| **MAE** | 0.195 | 0.185 |
+| **MSE** | 0.071 | 0.047 |
+| **RMSE** | 0.266 | 0.216 |
 
 
 📌 The "Everything but the Kitchen Sink" model is a dramatic improvement over Model 1/1A with the R<sup>2</sup> increased to 0.633. This indicates that happiness is far more predictable with we look at a fuller range of well-being indicator. 
