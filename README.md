@@ -59,7 +59,7 @@ The result of this analysis is a dashboard that will hopefully challenge the ass
 
 ## 2.0 Project Links
 * [Github repo](https://github.com/HaveTimeDrinkTea/Keeping_up_with_the_Joneses)
-* Interactive Tableau Dashboard on [Tableau Public](https://public.tableau.com/views/keeping_up_with_the_joneses_v3/DashboardKeepingupwiththeJoneses2?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link) or via [download the keeping_up_with_the_joneses_v3.twbx.twbx](dashboard/keeping_up_with_the_joneses_v3.twbx)
+* Interactive Tableau Dashboard on [Tableau Public](https://public.tableau.com/app/profile/pei.wang1891/viz/Keeping_up_with_the_Joneses_v4/DashboardKeepingupwiththeJoneses2) or via [download the keeping_up_with_the_joneses_v4.twbx.twbx](dashboard/keeping_up_with_the_joneses_v4.twbx)
 * [Kanban Board on GitHub](https://github.com/users/HaveTimeDrinkTea/projects/3)
 
 ## 3.0 Data Source
@@ -395,15 +395,15 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
   * negative indicators are shown in red on the left  
 * Ethical considerations and Limitations
 
-📌 The dashboard is created with the colour scheme
-  * Font-Family: Tableau
-  * outer container: border ?px, RBG, outer/inner padding 4, background shading RGB
-  * Inner containers: border ?px, RBG, outer padding 2,, background shading RGB
-  * Heading 1: border ?px, RBG, outer padding 2, background shading RGB
-  * Heading 2: border ?px, RBG, outer padding 2, background shading RGB
-  * Annotation: Font (size = , weight=), RBG, 
-
-
+📌 The dashboard is created with the colour scheme:
+  * Font-Family: Tableau (BOLD for headers and normal for text)
+  * outer container: border, outer/inner padding 4, 
+  * Inner containers: border, outer padding 2
+  * Heading 1: border 12pt
+  * Heading 2: border 10pt
+  * Body/Axis Text: 8pt
+  * Annotation: brown
+  * Colours: 3 shades of grey for the borders, 3 shades of green for the background
 
 📌 The dashboard aims to be friendly to both technical and non-technical audience alike with
 * statistical results diplayed directly on the charts
@@ -411,11 +411,10 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 * the dashboard follows a top-down logical "what, so what and why" flow by first establising the UK North South Divide, then placing it in European contect and then revealing what truly drives happiness. 
 
 
-
 ### 7.1 Dashboard Presentation
 📌 An interactive dashboard
 
-* Interactive Tableau Dashboard on ["Keeping up with the Joneses" Dashboard on Tableau Public](https://public.tableau.com/app/profile/pei.wang1891/viz/keeping_up_with_the_joneses_v3/DashboardKeepingupwiththeJoneses2) or via [download the keeping_up_with_the_joneses_v3.twbx](dashboard/keeping_up_with_the_joneses_v3.twbx)  
+* Interactive Tableau Dashboard on ["Keeping up with the Joneses" Dashboard on Tableau Public](https://public.tableau.com/app/profile/pei.wang1891/viz/Keeping_up_with_the_Joneses_v4/DashboardKeepingupwiththeJoneses2) or via [download the keeping_up_with_the_joneses_v4.twbx](dashboard/keeping_up_with_the_joneses_v4.twbx)  
 
 ![Screenshot of Dashboard](docs/images/??.png) 
 
