@@ -77,6 +77,8 @@ The result of this analysis is a dashboard that will hopefully challenge the ass
  * "Reference_Year"
    * Lists the specific reference year for each indicator and region. Noting that data may be sourced from different collection periods.
 
+📌 According to the OECD, TL2 (Territorial Level 2) refers to the larger administrative regions within member countries, representing the first administrative tier of subnational government. See [Section 1.1 "Data Granularity" of 01_ETL_EDA_WellBeing_Data.ipynb](jupyter_notebooks/01_ETL_EDA_WellBeing_Data.ipynb).
+
 ## 4.0 Business and Learning Requirements    
 ### 4.1 Business Requirements
 📌 There are four main business requirements from the perspectives of a policymaker and a researcher:
@@ -327,7 +329,7 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 #### Results 
 
 | Metric | Model 2 (Train) | Model 2 (Test) | Model 3 |
-|:---|:---|:---|
+|:---|:---|:---|:---|
 | **R²** | 0.633 | 0.572 | 0.631 |
 | **MAE** | 0.195 | 0.185 | 0.196 |
 | **MSE** | 0.071 | 0.047 | 0.072 |
@@ -382,10 +384,22 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
   * negative indicators are shown in red on the left  
 * Ethical considerations and Limitations
 
-The dashboard aims to be friendly to both technical and non-technical audience alike with
+📌 The dashboard is created with the colour scheme
+  * Font-Family: Tableau
+  * outer container: border ?px, RBG, outer/inner padding 4, background shading RGB
+  * Inner containers: border ?px, RBG, outer padding 2,, background shading RGB
+  * Heading 1: border ?px, RBG, outer padding 2, background shading RGB
+  * Heading 2: border ?px, RBG, outer padding 2, background shading RGB
+  * Annotation: Font (size = , weight=), RBG, 
+
+
+
+📌 The dashboard aims to be friendly to both technical and non-technical audience alike with
 * statistical results diplayed directly on the charts
 * clear visual patterns, intuitive filters and hover tooltips guide the exploration of the analysis. 
 * the dashboard follows a top-down logical "what, so what and why" flow by first establising the UK North South Divide, then placing it in European contect and then revealing what truly drives happiness. 
+
+
 
 ### 7.1 Dashboard Presentation
 📌 An interactive dashboard
