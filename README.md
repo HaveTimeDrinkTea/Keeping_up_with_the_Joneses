@@ -416,7 +416,8 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 
 * Interactive Tableau Dashboard on ["Keeping up with the Joneses" Dashboard on Tableau Public](https://public.tableau.com/app/profile/pei.wang1891/viz/Keeping_up_with_the_Joneses_v4/DashboardKeepingupwiththeJoneses2) or via [download the keeping_up_with_the_joneses_v4.twbx](dashboard/keeping_up_with_the_joneses_v4.twbx)  
 
-![Screenshot of Dashboard](docs/images/??.png) 
+![Screenshot of Dashboard - Top half](docs/images/Keeping_up_with_the_Joneses_Dashboard_Screenshot1.png) 
+![Screenshot of Dashboard - Bottom half](docs/images/Keeping_up_with_the_Joneses_Dashboard_Screenshot2.png) 
 
 
 ## 8.0 Key Assumptions
