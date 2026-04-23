@@ -411,13 +411,21 @@ Upon reflection, I have decided to use all 91 observations in the to train the m
 * the dashboard follows a top-down logical "what, so what and why" flow by first establising the UK North South Divide, then placing it in European contect and then revealing what truly drives happiness. 
 
 
-### 7.1 Dashboard Presentation
-📌 An interactive dashboard
+### 7.1 Dashboard Presentation (Tableau & Power BI)
+#### 7.1.1 interactive dashboard (Built with Tableau)
 
-* Interactive Tableau Dashboard on ["Keeping up with the Joneses" Dashboard on Tableau Public](https://public.tableau.com/app/profile/pei.wang1891/viz/Keeping_up_with_the_Joneses_v4/DashboardKeepingupwiththeJoneses2) or via [download the keeping_up_with_the_joneses_v4.twbx](dashboard/keeping_up_with_the_joneses_v4.twbx)  
+📌 Interactive Tableau Dashboard on ["Keeping up with the Joneses" Dashboard on Tableau Public](https://public.tableau.com/app/profile/pei.wang1891/viz/Keeping_up_with_the_Joneses_v4/DashboardKeepingupwiththeJoneses2) or via [download the keeping_up_with_the_joneses_v4.twbx](dashboard/keeping_up_with_the_joneses_v4.twbx)  
 
-![Screenshot of Dashboard - Top half](docs/images/Keeping_up_with_the_Joneses_Dashboard_Screenshot1.png) 
-![Screenshot of Dashboard - Bottom half](docs/images/Keeping_up_with_the_Joneses_Dashboard_Screenshot2.png) 
+![Screenshot of Tableau Dashboard - Top half](docs/images/Keeping_up_with_the_Joneses_Dashboard_Screenshot1.png) 
+![Screenshot of Tableau Dashboard - Bottom half](docs/images/Keeping_up_with_the_Joneses_Dashboard_Screenshot2.png) 
+
+
+#### 7.1.2 Interactive dashboard (Built with Power BI)
+📌 Retains most of the dashboard built in Tableau with the exception of:
+* treemap is replaced by a decomposition tree map as the tree map feature in Power BI does not allow the colour gradients of each region within a country.
+* scatter plots of the top 3 predictor does not allow trendlines for each of the selected country.
+
+![Screenshot of Power BI Dashboard](docs/images/PowerBI_Keeping_up_Dashboard.png) 
 
 
 ## 8.0 Key Assumptions
@@ -572,7 +580,7 @@ All analytical questions, decisions and interpretations remained under human ove
 
 ## 13.0 Future Enhancements
 
-* Rebuild the Dashboard in PowerBI. This was in the original project plan but the challenges faced in Tableau Public meant that time was taken up to produce a MVP dashboard in Tableau.
+* Rebuild the Dashboard in PowerBI. This was in the original project plan but the challenges faced in Tableau Public meant that time was taken up to produce a MVP dashboard in Tableau. (Completed on 23 April 2026)
 
 * Extend the predictive model to include more European nations.
 
@@ -591,6 +599,7 @@ All analytical questions, decisions and interpretations remained under human ove
   * [![Pingouin](https://img.shields.io/badge/Pingouin-stats%3Fcolor%3Dfedcba)](https://pingouin-stats.org/)
   * ![SciPy](https://img.shields.io/badge/SciPy-654FF0?style=flat&logo=scipy&logoColor=white)
 * ![Tableau](https://custom-icon-badges.demolab.com/badge/Tableau-0176D3?logo=tableau&logoColor=fff)
+* ![Power BI](https://custom-icon-badges.demolab.com/badge/Power%20BI-F1C912?logo=power-bi&logoColor=fff)
 * ![Git workflow](https://img.shields.io/badge/Github%20Actions-282a2e?style=for-the-badge&logo=githubactions&logoColor=367cfe)
 
 
