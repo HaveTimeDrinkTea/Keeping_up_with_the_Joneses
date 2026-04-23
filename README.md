@@ -580,7 +580,7 @@ All analytical questions, decisions and interpretations remained under human ove
 
 ## 13.0 Future Enhancements
 
-* Rebuild the Dashboard in PowerBI. This was in the original project plan but the challenges faced in Tableau Public meant that time was taken up to produce a MVP dashboard in Tableau.
+* Rebuild the Dashboard in PowerBI. This was in the original project plan but the challenges faced in Tableau Public meant that time was taken up to produce a MVP dashboard in Tableau. (Completed on 23 April 2026)
 
 * Extend the predictive model to include more European nations.
 
